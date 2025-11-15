@@ -1,0 +1,5 @@
+[Series]
+car_classes=9                              	; Bitwise-or of allowed classes.
+given_name=Craftsman Truck                	; Unlocalized series name
+type=2                                     	; (0=cup, 1=gns, 2=truck)
+

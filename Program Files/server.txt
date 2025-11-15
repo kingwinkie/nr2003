@@ -1,0 +1,343 @@
+NASCAR® Racing 2003 Season Dedicated Server
+1.0.0.0
+Readme File
+01/17/03
+[ To read this file, select Edit/Word Wrap from the menu above ]
+
+***********************************************************************
+About This Document:
+
+This document contains information about NASCAR® Racing 2003 Season's Dedicated Server mode.
+
+***********************************************************************
+
+
+		  I.	CONFIGURING THE SERVER
+		 II.	SERVER ADMINISTRATION
+		III.	NETWORK CONFIGURATION INFORMATION
+		 IV.	OTHER INFORMATION
+
+
+
+I. CONFIGURING THE SERVER
+=========================
+
+STARTING THE SERVER
+
+When running a NASCAR® Racing 2003 Season dedicated server, it is recommended that the 3D configuration program be used to select the specially designed "GDI (For Dedicated MP Servers)" renderer which should allow the server to run on most any video card, and does not require 3D acceleration.  After the game has been configured, run "C:\Papyrus\NASCAR Racing 2003 Season\SERVER.EXE" or use the "Launch Dedicated Server" shortcut in the NASCAR® Racing 2003 Season program group on your Start Menu.
+
+
+DEDICATED SERVER AND SIERRA.COM
+
+By default the NASCAR® Racing 2003 Season's Dedicated Server will attempt to register itself with sierra.com's multiplayer service.  If you are running on a LAN or otherwise do not wish to utilize this feature, you will need to disable the "to_sierra=1" line in the [Server] section of CORE.INI.  To do this you would change the zero to a one "to_sierra=0".
+
+
+CREATING A NEW PLAYER
+
+After running SERVER.EXE you will need to create a new player for the server.  You can use any name, but for this exposition, let's call him "Dedicated Server"  Note that whatever multiplayer .car file this player has selected won't be available for anyone else, so choose a car no one wants to drive.  Keep this player selected (don't switch back to your regular player) and click DONE.  The game will then automatically advance to the Multiplayer-Host screen.
+
+
+SELECTING THE SERVER OPTIONS
+
+From the Multiplayer-Host screen if you have chosen to register the server with sierra.com you will need to enter the UserID and Password which will be used by the server.  If you choose not to save the UserID and Password, you can specify these values on the command line (see sections below for more details for using the command line override feature).
+
+Once the server has logged into sierra.com you will be taken to the Host Race screen where you will select the network/modem/serial ports on which you want to allow people to connect to the server.  For the network connections, also choose the maximum number of players you want to allow on each, and for the selected modems/serial ports, choose the speeds.  Fill in all other info as desired (access and/or boss passwords, latency limits, etc.).  Note that for sierra.com ratings to be in effect you must activate one or more of the Ratings Restrictions options.
+
+
+SELECTING THE RACE OPTIONS
+
+Selected the server options, hit the green button to advance to the track select screen.  Here you will select the race parameters as desired.  Note that the exact same set of race parameters will be applied to all races run by the server, so choose them wisely.  For example, if you're going to run fixed setup races, be sure that a setup with the selected file name exists at all tracks that the server will run (we're getting to that...).  You can hit the green button to advance the server to the race weekend screen and host the race, or if you would like to configure the server to cycle through a loop of races you may now hit the red button to exit the track select screen and the program will automatically back out through the multiplayer setup screen and main menu and return you to the desktop.
+
+
+CONFIGURING THE SERVER TO CYCLE THROUGH TRACKS
+
+Once the server has returned you to the desktop, using Notepad (or another plain-text editor (not Microsoft Word)), edit the Players\Server__Dedicated\PLAYER.INI file (or the directory that corresponds to whatever you named the player in the first step).  Look for the "Race0=" line in the "[Dedicated Server]" section of the file.  Add a "race<N>=<track_directory_name>" entry for each track the server should cycle through.  For example you could use:
+        race0=daytona
+        race1=michigan
+        race2=taladega
+        race3=dover
+You can go up to race63=  If you want the server to only run through the list of tracks once (or a few times) and then exit, change the "Repeat=0" line to indicate the number of times you want to cycle through them (Repeat=0 means cycle through them forever).  Save the PLAYER.INI file, and exit Notepad.  While you're editing the PLAYER.INI you can also adjust any settings you may have missed in the previous steps.
+
+When you launch the dedicated server again the game will automatically advance through the main menu, the multiplayer host, and the track select screens, and begin running the first race in the list.  When the race is complete, NASCAR will wait for three minutes to give people time to chat about the race, save standings and replays, etc., and then leave the race and start the next one in the list.  Or, if you cancel the race, it will go to the next race immediately.
+
+
+USING THE LEFT SHIFT KEY TO CANCEL A RACE
+
+Holding down the left shift key prevents the server from automatically running the next race in sequence.  To keep the dedicated server from advancing to the next race, hold the left shift key down when canceling a race on the race weekend screen, and keep the left shift key depressed until the track select screen finishes displaying.  This left shift key trick only works on the server itself.  Clients (even if they are bosses) cannot keep the server from cycling to the next race.   You can then hit the red button to shut down the server.
+
+
+II. SERVER ADMINISTRATION
+=========================
+
+COMMAND LINE OVERRIDE FOR GAME .INI SETTINGS
+
+When running a dedicated server it can be desirable to override the game's default .INI settings.  You can override any of NASCAR® Racing 2003 Season's .INI file options from the command line.  The command line overrides will not be saved to the .INI file, so there is no need to backup the .INI file.  The format of a command line override is as follows...
+
+	-ko"numeric_id:section_name:key_name:value"
+
+...where...
+
+numeric_id is the ID of the .INI file that contains the value to be overridden.  The mapping is as follows:
+
+	0  = CORE.INI,
+	10 = APP.INI
+	20 = PLAYER.INI
+	40 = TRACK.INI
+	50 = ADDRESS.INI
+
+section_name is the name of the section within the .INI file in which the key exists.  [Server], for example.  The brackets ([, and ]) should not be specified.
+
+key_name is the name of the key.  to_sierra, for example.
+
+For example, to use a value of 0 for to_sierra from the [Server] section of CORE.INI, you would use...
+
+SERVER.exe -ko"0:server:to_sierra:0"
+
+
+MULTIPLAYER REMOTE ADMINISTRATION
+
+Remote clients can control a NASCAR® Racing 2003 Season server.  There are two levels of control, a remote ADMIN and a remote BOSS. An admin of the server has full control, just as if he was physically on the server.  A boss has more limited control, and can not shut down the server or ban drivers.
+
+To allow remote bosses, a special form for the server password is used.  Clients that connect with the "boss" password will be able to control the server.  The password format is "[access_pwd][/[boss_pwd]][=f.last_of_boss]" (neither the brackets, nor the quotes, should be used, and anything between a pair of brackets is optional).  The password is not case sensitive.  The meaning of several example server passwords is given below:
+
+	"" - No password specified.  Anyone may connect to the server.  Only the server itself is a boss.
+	"private"  - All clients must enter the password (private) in order to connect to the server.  Only the server itself is a boss.
+	"private/secret" - All clients must enter the password (private) in order to connect to the server.  Any client that also knows the boss password (secret), and gives the password correctly (private/secret) will also be a boss of the server.  Note that this allows there to be more than one boss for the server.  Bosses must cooperate with each other!
+	"private/secret=f.smith" - Same as above, but any driver whose last name is "smith", and whose first initial is "f" will be given boss control over the server, even if they don't enter the boss password (secret).
+	"/quiet" - Anyone may connect to the server without specifying a password.  Anyone that gives the boss password (/quiet) will also be a boss.
+	"/" - This would be interesting!  Anyone can connect to the server without specifying a password.  Everyone that connects will be a boss.
+
+If you want to setup the server from the command line to allow remote administration of the server on a race by race basis, you could one of the following examples as your command line:
+        
+   	"C:\Papyrus Nascar Racing 2003 Season\SERVER.exe" -ko"20:server:password:/remote"     
+   	"C:\Papyrus Nascar Racing 2003 Season\SERVER.exe" -ko"20:server:password:test/remote" 
+
+The first example would allow all clients to connect without the need of an access password, and anyone connecting with the boss password "/remote" would have remote admin privileges.  In the second case all clients connecting to the server would need to use the access password "test", and those connecting with the password "test/remote" would have remote admin privileges.
+
+In addition to this boss password, a more powerful admin password can be specified.  Clients connecting to the server using the admin password in their password field will be made admins of the server.  These remote admins will have full control over the server, including shutting down the server and banning players.  To set up the server to allow remote admins, specify an admin password in the server's PLAYER.INI as shown below.
+
+	[SERVER]
+	admin_password=			; administrator password
+
+Clients wanting to connect to the server as a remote admin would need to enter the admin password in the game's password field (this would supercede any access passwords the server may normally require).  For example, if a server was setup using a normal access password of "foo" and an admin password of "bar", a client would only need to specify "bar" as the password to connect to the server as an admin.
+
+Clients already connected to a server can 'log-in' as an admin or a boss by entering the appropriate password using the following chat commands:
+
+	!admin admin_password - Used to log-in to the server as an admin, where "admin_password" is the server's current admin password.
+	
+	!boss boss_password - Used to log-in to the server as a boss, where "boss_password" is the server's current boss password.
+
+
+EJECTING DRIVERS
+
+Any admin or boss (remote or local) may remove a player from their server by using the "!eject" command.  Ejected drivers will be able to reconnect once the server is reset or returns to the track select screen.  The command should be entered as a chat message.  The format of the command is "!eject player", where player can either be the "#" symbol along with the player's car number, or the players name.  For example:
+
+	"!eject #12"
+	"!eject smith"
+	"!eject j.smith"
+	"!eject john.smith"
+
+
+BANNING DRIVERS
+
+Any admin (remote or local) may also ban a player from their server by using the "!ban" command.  For non-Sierra.com races this will eject the driver from the race and prevent them from reconnecting until the server is reset.  For Sierra.com races, the driver is ejected and automatically added to the server's muzzle list which will prevent him from ever reconnecting.  Again the command should be entered as a chat message.  The format of the command is "!ban player", where player can either be the "#" symbol along with the player's car number, or the player's name.  For example:
+
+	"!ban #12"
+	"!ban smith"
+	"!ban j.smith"
+	"!ban john.smith"
+
+
+ADDITIONAL SERVER ADMINISTRATION COMMANDS
+
+In addition to ejecting and banning drivers, server admins and bosses have several additional administration commands which they may use to control their server.  These commands are entered as chat messages, and must be preceded by an exclamation point as outlined below:
+
+	!list_commands - Returns a complete list of administration commands.
+
+	!list_polls - Returns a complete list of avaliable polls (see section below for details)
+
+	!do_not_auto_start_next_race - Temporarily overrides a server running a series of looped races allowing you to exit back to the track setup screen and select a new track and/or race options (note that the server will resume the previous loop at the completion of the race using the newly selected race options).
+
+	!show_password - Returns the server's current access, boss, and boss username passwords.  The server's password string will be reported back in the following format: "access_pwd/boss_pwd=boss_username"
+
+	!show_admin_password - Returns the server's current admin password (available to admins only).
+
+	!set_password  - Used to change the server's current access password.  The format of the command is "!set_password access_pwd", where "access_pwd" is the desired access password for the server.  The server's updated password string will be reported back in the following format: "access_pwd/boss_pwd=boss_username"
+
+	!set_admin_password - Used to change the server's current admin password.  The format of the command is "!set_admin_password admin_pwd", where "admin_pwd" is the desired admin password for the server (available to admins only).
+
+	!set_boss_password - Used to change the server's current boss password.  The format of the command is "!set_boss_password boss_pwd", where "boss_pwd" is the desired boss password for the server.  The server's updated password string will be reported back in the following format: "access_pwd/boss_pwd=boss_username" (available to admins only).
+
+	!set_boss_user - Used to set the server's current boss username password.  The chat command "!set_boss_user boss_username" would make a user named Fred a boss when they connected to the server.  The server's updated password string will be reported back in the following format: "access_pwd/boss_pwd=boss_username" (available to admins only).
+
+	!clear_password - Removes the server's current access password.  The server's updated password string will be reported back in the following format: "access_pwd/boss_pwd=boss_username".
+	
+	!clear_admin_password - Removes the server's current admin password (available to admins only).
+	
+	!clear_boss_password - Removes the server's current boss password.  The server's updated password string will be reported back in the following format: "access_pwd/boss_pwd=boss_username" (available to admins only).
+	
+	!clear_boss_user - Removes the server's current boss username password.  The server's updated password string will be reported back in the following format: "access_pwd/boss_pwd=boss_username" (available to admins only).
+
+	!make_boss - Used to give boss privileges to a player currently connected to the server.  The format of the command is "!make_boss player", where player can either be the "#" symbol along with the player's car number, or the player's name.
+
+	!make_non_boss - Used to remove boss privileges from a player currently connected to the server.  The format of the command is "!make_non_boss player", where player can either be the "#" symbol along with the player's car number, or the player's name.
+
+  	!yellow - Used to throw a yellow flag during race sessions.  You may not issue this command during the pace lap, or in the middle of a caution period.  You can, however, issue it after receiving the one-to-go signal, thus prolonging a caution.
+  	
+  	!black - Used to issue a black flag penalty to a user during race sessions.  The format of the command is "!black player", where player can either be the "#" symbol along with the player's car number, or the player's name.
+ 
+  	!clear - Used to clear a player's penalties.  The format of the command is "!clear player", where player can either be the "#" symbol along with the player's car number, or the player's name.  This command is and only valid when the player has a black flag penalty pending, or is currently serving a black flag penalty.
+
+  	!lap+ - Used to give a lap back to a player during a race.  The format of the command is "!lap+ player", where player can either be the "#" symbol along with the player's car number, or the player's name.
+
+  	!lap- - Used to take a lap away from a player during a race.  The format of the command is "!lap- player", where player can either be the "#" symbol along with the player's car number, or the player's name.
+
+	!shutdown - Shuts down the server (available to admins only).
+
+
+THE POLLING AND VOTE SYSTEM
+
+Multiplayer servers now have the option of allowing any connected user to call a poll to allowing them to vote on certain admin commands.  Only one poll is allowed at a time.  A 'yes' vote is automatically entered for the person initiating a poll.  All other users can vote on the poll using chat commands "!YES" or "!NO".  Only those users who were connected to the server at the time the poll was initiated are allowed to vote.  At the completion of the vote's timer any non-votes are counted as no votes, and the final outcome is broadcast to all users.  To prevent hogging the polling system, a user is not allowed to initiate a new poll for a short time after having conducted a poll.  The poll is entered as a chat message "!poll pole_type player" where player can either be the "#" symbol along with the player's car number, or the player's name.  The command "!list_polls" will return a complete list of avaliable polls.  For example:
+
+	!poll eject player [<comment>]
+	!poll yellow [<comment>]
+	!poll black player [<comment>]
+	!poll clear player [<comment>]
+	!poll lap+ player [<comment>]
+	!poll lap- player [<comment>]
+	!poll track track_name
+
+The track poll is used to reset the current race weekend at a different track.  This is only valid on a dedicated race server, it is not valid on an open server.  It may  not be requested once qualifying is complete, and the server will return to its normal cycle of tracks (though at an indeterminate track in the cycle) once the requested track has been run.  The format of the command is "!poll track track_name", but you do not need to enter the complete track name.  You only need to enter the first few letters of the name, as it appears in the track dropdown, so that it is distinct.  For example, entering "!poll track atl" is fine for "Atlanta".  "!poll track bristol" will choose Bristol, and "!poll track bristol n" will choose the night version of Bristol.
+
+By default polling will be enabled on Open servers, and a simply majority (greater than 50%) is needed for each poll pass.  Some users may wish to disable polls on their open servers, or change the percentage vote needed for a poll to pass.  The following two new CORE.INI settings have been added for this:
+
+	[SERVER]
+  	poll_pass_percent = 50 		 ; % of yes votes *that must be exceeded* for a vote to pass.
+	open_server_disable_polling = 0  ; Set to 1 to disable the polling system on open servers
+
+Two new driving controls have been added to quickly vote YES or NO in response to a poll.  Note that these hotkeys are only available while driving in-car:
+	
+	F11 - votes yes  (issues !yes chat command)
+	F12 - votes no   (issues !no chat command)
+
+
+HIDING REMOTE BOSS AND ADMIN STATUS
+
+Remote bosses and admins normally show up in the entry list on the race weekend screen in a different color than regular clients.  You may now hide this indication of a remote client's boss or admin status by editing the following lines in the server's CORE.INI.  Note that admins are effectively bosses with additional powers, so enabling the hide_bosses option will also hide admins.  If you only want to hide admins, use the hide_admins option instead.
+
+	[SERVER]
+	hide_admins=0		; Hide who the admins are?
+	hide_bosses=0		; Hide who the bosses are? (hides admins, too)
+
+
+RUNNING AN OPEN SERVER
+
+NASCAR® Racing 2003 Season allows you to create a server that can be controlled by other users to set up their own races.  When run as an 'Open Server', the game will wait on the race setup screen and the first client who connects to the server will automatically be made a boss.  The boss can choose race options and advance the server to the race weekend and run the race (see below for specific limits the server administrator can enforce).  If this boss disconnects another user connected to the race will be selected to take over as the new boss.  At the completion of the race session, the server will disconnect all clients (including the active boss), and cycle back to the race setup screen waiting for the next user to connect and take control.
+
+The parameters that control an open server are in the [SERVER] section of CORE.INI.
+
+- open_server=0
+Change the 0 to a 1 to turn this server into an open server.  Note that this is only takes effect if either dedicated=1 or launch=1 (note that these two values are automatically set to 1 when SERVER.EXE is used).
+
+- open_server_boss_idle_limit=N
+While at the race setup screen, a user will only be allowed to be a boss for up to this number of minutes before their bossness is revoked and given to some other user.  This is to prevent someone from connecting to the server, becoming a boss, walking away, and thus hijacking the server.  If this value is set to 0, then this feature is disabled.
+
+- open_server_disable_boss_eject=1
+Unfortunately some users may try to abuse their boss privileges by indiscriminantly ejecting other drivers.  If this value is set to 0 you can allow bosses to eject other drivers from your server.
+
+- open_server_disable_cancel_weekend=0
+It's entirely possible that the boss of the server could wreck himself in turn one on lap one at which point he may want to cancel the weekend.  If this value is set to 1, then bosses will not be allowed to cancel the weekend once it has begun, and instead they will only have the option to disconnect at which point a new user will take over as boss.
+
+ - open_server_practice_length_limit=N
+This specifies the maximum combined practice/warmup time for the race weekend (in minutes).  The boss will be given an error message if they try to change either the practice or warmup session length such that the sum of the two is more than this value.  Setting this value to 0 disables this feature and allows any normal practice and warmup session lengths to be set.
+
+ - open_server_race_percent_limit=N
+This specifies the maximum race length percentage that the boss will be allowed to set.  Setting this value to 0 disables this feature and allows any normal race length percentage to be set.
+
+ - open_server_restart_limit=N
+This specifies the maximum number of session restarts that the boss will be allowed to use.  Setting this value to 0 disables this feature and does not allow any session restarts.  When restarting sessions, each session that is in between the current and desired sessions counts towards this allowed total.  For example, going from the race session back to practice would count as 4 session restarts because you would be restarting the race session plus backing through three completed sessions (this is assuming that the warmup session was enabled).
+
+- open_server_max_latency_limit=N
+This specifies the maximum latency a client can have and still be allowed to connect to the server.  Setting this value to 0 disables this feature.
+
+- open_server_min_LPI_limit=N
+This specifies the minimum Laps Per Incident (LPI) a client must have to be allowed to connect to the server.  Valid values range from 1 to 255.  Setting this value to -1 disables this feature.  Note that when setting up a user run server this option may be grayed out and disabled if you are using a new Sierra.com UserID that has an LPI of zero.
+
+- open_server_max_rating_limit=N
+This specifies the maximum Sierra.com rating from 0 to 10 that a client can have and still be allowed to connect to the server.  Setting this value to -1 disables this feature.  Note that this value must be used in conjunction with the open_server_min_rating_limit value listed below to set a valid min to max range.
+
+- open_server_min_rating_limit=N
+This specifies the minimum Sierra.com rating from 0 to 10 that a client must have and still be allowed to connect to the server.  Setting this value to -1 disables this feature.  Note that this value must be used in conjunction with the open_server_max_rating_limit value listed above to set a valid min to max range. 
+
+
+RESERVING NETWORK CONNECTIONS FOR REMOTE ADMINISTRATORS
+
+Remote administrators (those that enter the server admin password when trying to connect) are now allowed to connect to the server at any time, even if the starting grid is official.  If they connect after qualifying, they will not be allowed to race.  Hitting the DRIVE button will cause it to gray out, but they will not be allowed on track.  Additionally it is now possible to reserve any number of network connections for remote admins.  These reserved connections are included in, not in addition to, the number of network connections selected on the server setup screen.  You may specify the number network connections that will be reserved in the [SERVER] section of the CORE.INI as shown below.
+
+	[SERVER]
+	num_admin_only_net_conns = 0  ; Number of network connects reserved for admins
+
+
+III. NETWORK CONFIGURATION INFORMATION
+======================================
+
+MULTIPLAYER BEHIND A FIREWALL OR ROUTER
+
+By default the following UDP ports will be used by NASCAR® Racing 2003 Season: 32766 for the net_server_port, 32767 for ping port, and then sequentially numbered ports for each allowed client connection (max of 42) starting at 32768.
+
+To run from a machine with a private IP address behind a Linux firewall, you need to use a combination of IP masquerading and IP autoforwarding.  The following rules for the default 42 client port range can be used:
+
+	ipfwadm -F -a accept -m -S a.a.a.a/m.m.m.m -D 0.0.0.0/0
+	ipautofw -A -r udp 32766 32809 -h a.a.a.a -v -u
+
+Where a.a.a.a is the address of the machine behind the firewall, and m.m.m.m is the netmask.  If you run a server behind the firewall, clients should connect to the IP address of the firewall.
+
+If you wish to host a NASCAR® Racing 2003 Season race from behind a router you will need to forward the default UDP port range of 32766-32809 from the router to the internal or LAN IP of the NASCAR® Racing 2003 Season server.  Linksys users will need to latest firmware update to allow port ranges to the forwarded.  When connecting, clients should use the external or WAN IP address of the router.
+
+If you have a router or firewall and would like to allow multiple users on your LAN to connect to the same multiplayer server, you will need to have each of the clients behind the router use a different net_server_port in their CORE.INI files (one client would make no changes and use the default port, while each of the others would need to specify a unique net_server_port).
+
+Additionally if you are hosting a server from behind the router by forwarding the default UDP port range to the LAN IP of the server, no clients on your LAN will be able to connect to multiplayer races since all of the incoming packets would be forwarded to your server.  If you want to allow these clients to connect to races while your server is running, it would be necessary to forward and configure the server to use a non-standard UDP port range (see below for details).
+
+
+RUNNING MULTIPLE SERVERS
+
+If you want to run more than one server on a single machine or from behind a firewall, you will need to give each of the servers its own unique port range for client/server communications, and also include these port ranges in the ipautofw rules or router configuration if applicable.  To do this you would specify a unique net_server_port for each server, remember to leave room between each net_server_port settings for the server's ping port and client connection ports.
+
+For example, if you were going to allow 20 clients to connect to each of your two servers you could leave the first server on the default net_server_port of 32766.  You would need to reserve 21 ports for ping and clients, so the next available port for the second server to use as it's net_server_port would be 32788.
+
+Using a single installation of the game you may use the command line override to start additional instances of the server, each with their own settings.  In the above example the first server would be started normally to use the default settings, and the second instance would use the following command line option to set it's net_server_port to 32788:
+
+	-ko"0:communications:net_server_port:32788"
+
+For more information see the "Command Line Override for Game .INI Settings" section above.
+
+Note that on a LAN, clients will only see race servers broadcast to the Local Races table that are using the default net_server_port.  In order to connect to servers using other net_server_ports, clients will need to manually enter both the server's IP address as well as the port number (in the format n.n.n.n:port).  In the above example, if the IP address of the server was 192.168.1.2 clients would need to connect to 192.168.1.2:32788.
+
+
+IV. OTHER INFORMATION
+=====================
+
+AUTOSAVING REPLAYS
+
+You can edit PLAYER.INI and change the auto_save_replay=0 to =1 in the [SERVER] section, causing the server to, well, automatically save the replay (you better have a lot of free disk space!).  Note that by default the dedicated server will only allocate 512KB for its replay buffer, so if you've chosen to auto-save replays you will also need to specify a replayMemoryOverride value in the [REPLAY] section of CORE.INI.
+
+
+SERVER RACE OVER TIMER
+
+After the checkered flag, the race will wait for three minutes before advancing to the next track the loop or returning to the setup screen.  This allows players to chat after the race or to save the replay.  If you wish to change this amount of time you may edit the auto_leave_timeout line the [SERVER] section of the PLAYER.INI (note that this value is seconds).
+
+
+ADDING AI OPPONENTS TO A MULTIPLAYER RACE
+
+You may only have up to 42 connections to a multiplayer server for both human and AI opponents.  In order to allow the addition of AI opponents to the server, you must first reduce the number of allowed TCP/IP or IPX connections to less than 42 human opponents.  Once this is done you will be able to fill out the field with AI opponents.
+
+
+PERFORMANCE ISSUES
+
+You are not allowed to drive on a dedicated server, and no 3D graphics or sound is generated, so a pretty small machine should be capable of hosting fairly large fields.
+
+For each client connecting to the server using TCP/IP, the server will use at most about 21K bits per second of bandwidth.  You'll need to experiment to see how many clients your connection is actually capable of supporting.  It's probably not worth trying to host more than 3 clients on a 56K modem (and 3 will probably be dicey).  It's probably not worth trying to host more than, say, 15 to 20 on a cable modem.  If you do try to push the envelope (you wouldn't do that, would you?) here are some clues that you've gone too far:
+
+	1. The rate at which clients lose their connection to the server increases significantly.
+	2. The latency for many of the clients increases as new clients connect, or their quality decreases.  You can monitor this using the Entries table on the Race Weekend screen.  Clients should monitor their own connection using the communications meters while on track (hitting Control-C while in car will toggle the meters on/off).
+	3. Clients report more "warping" as yet more clients connect.

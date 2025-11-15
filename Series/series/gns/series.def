@@ -1,0 +1,5 @@
+[Series]
+car_classes=5                              	; Bitwise-or of allowed classes.
+given_name=Grand National                	; Unlocalized series name
+type=1                                     	; (0=cup, 1=gns, 2=truck)
+

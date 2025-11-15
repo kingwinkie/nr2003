@@ -1,0 +1,5 @@
+[Series]
+car_classes=3                              	; Bitwise-or of allowed classes.
+given_name=NASCAR Cup	                	; Unlocalized series name
+type=0                                     	; (0=cup, 1=gns, 2=truck)
+

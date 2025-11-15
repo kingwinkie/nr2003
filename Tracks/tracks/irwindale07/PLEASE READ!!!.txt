@@ -1,0 +1,82 @@
+---------------------------------------------------------------
+ProModding.com NASCAR Racing 2003
+---------------------------------------------------------------
+Irwindale 2007 Day and Night
+
+3/16/08
+
+[ To read this file, select Edit/Word Wrap from the menu above ]
+
+TABLE OF CONTENTS
+
+[1] IMPORTANT -- BEFORE YOU INSTALL!!!
+[2] HOW TO INSTALL THE TRACK
+[3] KNOWN ISSUES
+[4] TROUBLE REPORTING 
+[5] CREDITS
+
+
+[1] IMPORTANT -- BEFORE YOU INSTALL!!!
+====================================
+
+This track is only multiplayer compatible with exact copies of itself. YOUR SERVER MUST BE HOSTING THIS EXACT TRACK <irwindale07> or <irwindale07_night> IN ORDER FOR YOU TO USE IT IN ONLINE PLAY.
+
+
+[2] HOW TO INSTALL THE TRACK
+====================================
+
+After downloading the Irwindale2007.exe file from the website, simply run the installer and follow the prompts.  The installer will automatically place the track into the NASCAR Racing 2003 Season\tracks directory by default.
+
+
+[3] KNOWN ISSUES
+====================================
+
+This track is by no means done, but i felt i needed public feedback to further develop it to its fullest extent.
+
+A potential bug with the placement of the pace car has been reported, but has not yet been confirmed. Several attempts were made to correct this to no avail. If you have a solution, please feel free to offer it in our forums, or contact me privately.
+
+Another issue is the tv cam 2. I felt the tv cam 1 and spectator cams were sufficient for this release to allow admins to get a good view of all the action. It will be updated in a future release.
+
+Some users have noted that the night track seems too dark. This was done on purpose to better simulate the real tracks lack of lighting, and give it a more "local short track feel"
+
+Users on lower-end video cards or processors may experience a hit in frame rates due to the large amount of textures included in this track.
+
+Multiplayer compatible ONLY with other unmodified copies of <irwindale07> or <irwindale07_night> (See topic # 1 in this ReadMe).
+
+
+
+
+[4] TROUBLE REPORTING 
+====================================
+
+As well as posting in the ProModding.com forums, you may also use the forums at www.rubbins-racins.com or theuspits.com  Please include the subject line Irwindale 2007 inquiry.
+
+Direct links:  
+
+http://www.ProModding.com/
+
+http://www.rubbins-racin.com/
+
+http://www.thepits.us/
+
+
+
+[5] CREDITS
+====================================
+
+First off I would like give a HUGE THANKS to Papyrus for creating the most kick@#$ racing simulation out there!!
+
+I also would like to give special thanks to the developers of Project Wildfire for the Sandbox utility, without it the updates to the tracks could not be possible.
+
+Also a special thanks to the creator of the WinMip2 utility, again, the tracks could not be possible. 
+
+As well as a huge thank you to Dave Noonan for creating 3d Sim Ed
+
+***Thanks to several folks at superspeedway.net for their 3d modelling help!!!
+
+***Thanks to all the beta testers from The Pits forums
+
+*** HUGE Thanks to JJ from www.superspeedway.net for allowing me to bug him all the time with questions. :o)
+
+And to all of those who submitted information towards the tracks that are just to HUGE to mention, THANKS!!!!!!
+

@@ -1,0 +1,25 @@
+:Base config.hlp
+
+1 Overview
+2 How to configure NASCAR Racing 2003 Season's graphics=main_index>main
+
+1 Selecting a Renderer
+2 How to Select a Renderer=select_renderer>main
+2 About the DirectX D3D Renderer=dxg_renderer>main
+2 About the OpenGL Renderer=opengl_renderer>main
+2 About the GDI Renderer=gdi_renderer>main
+
+1 Selecting a Display Adapter
+2 How to Select a Display Adapter=select_adapter>main
+2 About Hardware Transform and Lighting=tnl_adapter>main
+
+1 Selecting a Graphics Mode
+2 How to Select a Graphics Mode=select_mode>main
+2 About Resolution=resolution_mode>main
+2 About Color Depth=color_depth_mode>main
+
+1 Troubleshooting
+2 Troubleshooting Problems=troubleshooting_problems>main
+2 Useful Links=useful_links>main
+
+1

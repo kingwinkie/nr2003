@@ -1,0 +1,18 @@
+[Ident]
+ProductID = 71867
+FullTitle=NASCAR Racing 2003 Season
+ShortTitle=NR2003
+Version = 1.0.0.0
+PatchVersion=1.2.0.1
+UpdateAfter = 4-1-2003
+RegURL = https://reg.sierra.com/prodreg.php?sku=71867
+
+[System Test]
+ScreenWidth = 800
+ScreenHeight = 600
+Colors = 65535
+MemMB = 64
+WinVer = 395
+Wave = 1
+[Setup]
+InstallShield=1

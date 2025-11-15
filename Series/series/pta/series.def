@@ -1,0 +1,5 @@
+[Series]
+car_classes=17                              	; Bitwise-or of allowed classes.
+given_name=Trans Am                	; Unlocalized series name
+type=3                                    	; (0=cup, 1=gns, 2=truck)
+
