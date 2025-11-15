@@ -1,0 +1,17 @@
+[Ident]
+ProductID = D71867
+FullTitle=NASCAR Racing 2003 Season Demo
+ShortTitle=NR2003D
+Version = 1.2.0.1
+PatchVersion = 1.2.0.1
+UpdateAfter = 4-1-2025
+RegURL = http://www.2025.com
+WebURL = http://www.2025.com
+
+[System Test]
+ScreenWidth = 800
+ScreenHeight = 600
+Colors = 65535
+MemMB = 64
+WinVer = 395
+Wave = 0
