@@ -1,0 +1,19 @@
+
+Usage: i6comp.exe <cmd> [-opts] <cab> [file index|fmask|path] [disk fmask|path]
+Commands
+	l: list Files
+	g: list File Groups    c: list Components   t: list Setup Types
+	s: convert multi-volume cab to a single volume (not recommended)
+	e: extract files (specify <cab index|mask> when specifying <disk path>)
+	x: same as 'e' with subdirs
+	r: replace files in cab (same syntax as 'e')
+	d: delete files from cab (specify <cab index|mask>)
+	a: add files to cab (<cab path> is optional; must specify -g OR -f)
+	z: zero-size files (specify <cab index|mask>)
+Options
+	v: verbose info mode
+	r: extract subdirs/recurse and store subdirs
+	d: include directories in cab matches
+	g<name|index>: specifies File Group to work with
+	o: suppress supplementary output (start msg, comments, etc.)
+	f: treat File Groups as directories (usefull for GUI, wrappers)

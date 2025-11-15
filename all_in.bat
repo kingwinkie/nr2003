@@ -5,10 +5,6 @@ echo Lets do this
 
 .\i6comp.exe a -r -f cabs/data1.cab Executable
 
-.\i6comp.exe d -r -f cabs/data1.cab "[Support]English String Tables"
-
-.\i6comp.exe a -r -f cabs/data1.cab "[Support]English String Tables"
-
 .\i6comp.exe d -r -f cabs/data1.cab Layout
 
 .\i6comp.exe a -r -f cabs/data1.cab Layout

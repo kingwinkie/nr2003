@@ -1,0 +1,29 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: i6comp - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP179.tmp" with contents
+[
+/nologo /ML /W3 /GX /O2 /I "./" /D "NDEBUG" /D "WIN32" /D "_CONSOLE" /Fp".\Release/i6comp.pch" /YX /Fo".\Release/" /Fd".\Release/" /FD /c 
+"F:\Programming\i6comp\i6comp.c"
+"F:\Programming\i6comp\Rsa\md5c.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP179.tmp" 
+Creating command line "link.exe kernel32.lib advapi32.lib shell32.lib zdata\zdata.lib /nologo /subsystem:console /incremental:no /pdb:".\Release/i6comp.pdb" /machine:I386 /out:".\Release/i6comp.exe"  .\Release\i6comp.obj .\Release\md5c.obj "
+<h3>Output Window</h3>
+Compiling...
+i6comp.c
+md5c.c
+Linking...
+
+
+
+<h3>Results</h3>
+i6comp.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
