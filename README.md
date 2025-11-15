@@ -25,17 +25,17 @@ What can go wrong….
 
 File paths 
 
-	When you look at the folder structure some folders are nested (/Tracks/tracks/). This because how I am extracting /replacing/compressing it uses that to know where to put things, and that it goes in a folder named tracks. Then some folders like “programs files” are not nested and when installed are placed in the root install directory (ie nr2003.exe) 
+When you look at the folder structure some folders are nested (/Tracks/tracks/). This because how I am extracting /replacing/compressing it uses that to know where to put things, and that it goes in a folder named tracks. Then some folders like “programs files” are not nested and when installed are placed in the root install directory (ie nr2003.exe) 
 
 So you really need to check the install to make sure the files go where you want them to go.
 
 Folders not showing up
 
-	If you create a folder there MUST be something in it as the setup seems not to like creating folders that are empty. That’s why there is the folder called “replay” in the program files folder as it seemed to have stopped creating it and I did look for why.
+If you create a folder there MUST be something in it as the setup seems not to like creating folders that are empty. That’s why there is the folder called “replay” in the program files folder as it seemed to have stopped creating it and I did look for why.
 
 Files or anything really not showing up.
 
-	As we are recycling a setup.exe there are things that are hard coded in the exe if it will create something or not so always look to where you a placing it. I have had issues adding folders to the root install directory, that’s why the replay folder is in the program files directory :).
+As we are recycling a setup.exe there are things that are hard coded in the exe if it will create something or not so always look to where you a placing it. I have had issues adding folders to the root install directory, that’s why the replay folder is in the program files directory :).
 
 All this was done on a trial and error basis so I am still changing things and the commands that we need to run, as I find out more. That is one of the reasons that I put this up to see if anyone else would care to lend a hand.
 
@@ -43,4 +43,4 @@ If you make changes I would like to know the whats and the whys.
 
 Some advanced bits
 
-	There are more files and folders in the cabs but if all you are doing is run of the mill mods you don’t need them and I have not put them here for simplicity’s sake. If you get into it where you need access to them you should be ok with getting into them, Install changes really I think.
+There are more files and folders in the cabs but if all you are doing is run of the mill mods you don’t need them and I have not put them here for simplicity’s sake. If you get into it where you need access to them you should be ok with getting into them, Install changes really I think.
