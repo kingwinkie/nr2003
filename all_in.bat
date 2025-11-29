@@ -1,3 +1,7 @@
+REM The cls command below will clear the console window before starting. Handy for troubleshooting.
+REM remove the rem (INCAPS) for cls
+cls
+REM hitting the spacebar should stop the batch file and saves having to scroll up to troubleshooting.
 @echo off
 echo Lets do this
 
@@ -28,10 +32,6 @@ echo Lets do this
 .\i6comp.exe d -r -f cabs/data1.cab Sound
 
 .\i6comp.exe a -r -f cabs/data1.cab Sound
-
-.\i6comp.exe d -r -f cabs/data1.cab Telemetry 
-
-.\i6comp.exe a -r -f cabs/data1.cab Telemetry 
 
 .\i6comp.exe d -r -f cabs/data1.cab tracks
 
