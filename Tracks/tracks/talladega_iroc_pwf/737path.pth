@@ -1,0 +1,7 @@
+0			; This is a version number. For now, it should always be 0
+4			; This is the number of waypoints. The list of waypoints follows.
+-2200 -910 100 250 0	; x y z radius timedelay. Implicitly, this is waypoint 0
+ 2300 -940 100 250 0	; waypoint 1
+2900 -2500 100 250 0
+-2760 -2255 100 250 0	
+ 
