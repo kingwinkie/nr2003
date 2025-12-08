@@ -1,4 +1,12 @@
 # nr2003
+New release 12/8/2025
+
+I found and added the PWF_iroc mod and got the Series files and the tracks that went with it.
+
+Release Nr2003.1.2
+
+Add the PWF cup damage did some folder adjustments 
+
 So this is what I am using to change what is packed in the cabs in NR2003. This is pretty much all you need to add tracks/cars/layout or whatever files so that they are there in the install.
 
 Then I just put them with with the demo install setup.files to get around some issues with the regular setup.exe. While it should work with the regular setup.exe I am still using the demo.
@@ -6,11 +14,13 @@ Then I just put them with with the demo install setup.files to get around some i
 These files also should have everything patched up to 1.2.0.1. 
 
 It should also have all the cars and tracks that the patched stock game gives you (I might have added :))
+ 
+Option 1
+So you can git clone https://github.com/kingwinkie/nr2003.git and get enough to get going.
 
-So you can git clone https://github.com/kingwinkie/nr2003.git and get all you need.
+Make your changes and remake the cabs that you changed with the info in the batch file then copy the cabs to the install_files directory and install with setup.exe. The cabs included are Mini_cabs they should have all the layout but NOT all the files
 
-Make your changes and remake the cabs that you changed with the info in the batch file then copy the cabs to the install_files directory and install with setup.exe
-
+Option 2
 Download the release and i6comp.exe. Extract the updated files from the cab, make changes repack the cabs and replace them in the updated install folder. 
 
 Or you just download the cabs folder and i6comp.exe and make you own folder structure with the updated cabs. You will probably need to make your own install as both the demo and stock setup will throw errors and while they might not led into a broken install they are still errors that will pop up on the screen and look bad.
